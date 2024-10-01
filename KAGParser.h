@@ -17,6 +17,7 @@
 #include "tjsHashSearch.h"
 #endif
 
+
 /*[*/
 //---------------------------------------------------------------------------
 // KAG Parser debug level
@@ -28,7 +29,6 @@ enum tTVPKAGDebugLevel
 	tkdlVerbose // complete report ( verbose )
 };
 /*]*/
-
 
 
 //---------------------------------------------------------------------------

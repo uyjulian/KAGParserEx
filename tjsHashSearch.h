@@ -11,7 +11,9 @@
 #ifndef HashSearchH
 #define HashSearchH
 
-#include "tp_stub.h"
+#ifndef KAGPARSER_EX_PLUGIN
+#include "tjs.h"
+#endif
 
 #define TJS_HS_DEFAULT_HASH_SIZE 64
 #define TJS_HS_HASH_USING	0x1
@@ -34,7 +36,7 @@ public:
 	{
 		const char *p = (const char*)&val;
 		const char *plim = (const char*)&val + sizeof(T);
-		tjs_uint32 ret = 0;
+		register tjs_uint32 ret = 0;
 		while(p<plim)
 		{
 			ret += *p;
@@ -614,27 +616,27 @@ public:
 	void Add(const KeyT &key, const ValueT &value)
 	{
 		inherited::Add(key, value);
-		if(inherited::GetCount() > MaxCount)
+		if(GetCount() > MaxCount)
 		{
-			inherited::ChopLast(inherited::GetCount() - MaxCount);
+			ChopLast(GetCount() - MaxCount);
 		}
 	}
 
 	void AddWithHash(const KeyT &key, tjs_uint32 hash, const ValueT &value)
 	{
 		inherited::AddWithHash(key, hash, value);
-		if(inherited::GetCount() > MaxCount)
+		if(GetCount() > MaxCount)
 		{
-			inherited::ChopLast(inherited::GetCount() - MaxCount);
+			ChopLast(GetCount() - MaxCount);
 		}
 	}
 
 	void SetMaxCount(tjs_uint maxcount)
 	{
 		MaxCount = maxcount;
-		if(inherited::GetCount() > MaxCount)
+		if(GetCount() > MaxCount)
 		{
-			inherited::ChopLast(inherited::GetCount() - MaxCount);
+			ChopLast(GetCount() - MaxCount);
 		}
 	}
 

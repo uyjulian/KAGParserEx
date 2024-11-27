@@ -47,7 +47,7 @@ EXPORT(HRESULT) V2Link(iTVPFunctionExporter *exporter)
 {
 	TVPInitImportStub(exporter);
 
-	kagparserex_init()
+	kagparserex_init();
 
 	GlobalRefCountAtInit = TVPPluginGlobalRefCount;
 	return S_OK;

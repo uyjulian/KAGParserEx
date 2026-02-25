@@ -21,6 +21,10 @@ void kagparserex_init()
 	}
 }
 
+#ifndef STDCALL
+#define STDCALL __stdcall
+#endif
+
 #ifdef TVP_STATIC_PLUGIN
 
 #define EXPORT(hr) static hr STDCALL
@@ -44,6 +48,7 @@ void kagparserex_init()
 #  pragma comment(linker, "/EXPORT:V2Unlink=_V2Unlink@0")
 # endif
 #endif
+#if 0
 #ifdef __GNUC__
 asm (".section .drectve");
 # if defined(__x86_64__) || defined(__x86_64)
@@ -51,6 +56,7 @@ asm (".ascii \" -export:V2Link=V2Link -export:V2Unlink=V2Unlink\"");
 # else
 asm (".ascii \" -export:V2Link=V2Link@4 -export:V2Unlink=V2Unlink@0\"");
 # endif
+#endif
 #endif
 
 
